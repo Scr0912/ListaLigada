@@ -67,6 +67,25 @@ namespace ListaLigada
             Console.WriteLine();
         }
 
+        /* public void OrdenarDescendente()
+         {
+             List<T> datos = new List<T>();
+             var actual = cabeza;
+             while (actual != null)
+             {
+                 datos.Add(actual.Dato);
+                 actual = actual.Siguiente;
+             }
+
+             datos.Sort((a, b) => b.CompareTo(a));
+
+             cabeza = cola = null;
+             foreach (var dato in datos)
+             {
+                 AdicionarFin(dato);
+             }
+         }
+        */
         public void OrdenarDescendente()
         {
             List<T> datos = new List<T>();
@@ -77,12 +96,25 @@ namespace ListaLigada
                 actual = actual.Siguiente;
             }
 
+            
             datos.Sort((a, b) => b.CompareTo(a));
 
-            cabeza = cola = null;
+            cabeza = null;
+            cola = null;
+
             foreach (var dato in datos)
             {
-                AdicionarFin(dato);
+                var nuevo = new Nodo<T>(dato);
+                if (cabeza == null)
+                {
+                    cabeza = cola = nuevo;
+                }
+                else
+                {
+                    cola.Siguiente = nuevo;
+                    nuevo.Anterior = cola;
+                    cola = nuevo;
+                }
             }
         }
 

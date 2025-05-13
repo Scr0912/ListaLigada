@@ -18,10 +18,17 @@ namespace ListaLigada
 
                 switch (opcion)
                 {
+                    
                     case 1:
-                        Console.Write("Ingrese dato: ");
-                        lista.Adicionar(Console.ReadLine());
+                        Console.Write("Ingrese datos separados por espacios: ");
+                        var entrada = Console.ReadLine();
+                        var datos = entrada.Split(' ', StringSplitOptions.RemoveEmptyEntries);
+                        foreach (var dato in datos)
+                        {
+                            lista.Adicionar(dato);
+                        }
                         break;
+
                     case 2:
                         lista.MostrarAdelante();
                         break;
