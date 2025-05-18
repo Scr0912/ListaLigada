@@ -6,8 +6,8 @@ namespace ListaLigada
 {
     public class ListaDoble<T> where T : IComparable<T>
     {
-        private Nodo<T> cabeza;
-        private Nodo<T> cola;
+        private Nodo<T>? cabeza;
+        private Nodo<T>? cola;
 
         public void Adicionar(T dato)
         {
@@ -31,6 +31,7 @@ namespace ListaLigada
                 cabeza = nuevo;
             }
             else if (actual == null)
+
             {
                 cola.Siguiente = nuevo;
                 nuevo.Anterior = cola;
@@ -67,25 +68,7 @@ namespace ListaLigada
             Console.WriteLine();
         }
 
-        /* public void OrdenarDescendente()
-         {
-             List<T> datos = new List<T>();
-             var actual = cabeza;
-             while (actual != null)
-             {
-                 datos.Add(actual.Dato);
-                 actual = actual.Siguiente;
-             }
-
-             datos.Sort((a, b) => b.CompareTo(a));
-
-             cabeza = cola = null;
-             foreach (var dato in datos)
-             {
-                 AdicionarFin(dato);
-             }
-         }
-        */
+        
         public void OrdenarDescendente()
         {
             List<T> datos = new List<T>();
